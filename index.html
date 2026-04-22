@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>云白云服务平台 - 协议中心</title>
+    <style>
+        :root {
+            --primary-blue: #3498db;
+            --primary-navy: #1a237e;
+            --primary-teal: #16a085;
+            --glass-bg: rgba(255, 255, 255, 0.9);
+        }
+
+        /* 修复居中Bug：确保在所有设备上绝对居中 */
+        * { box-sizing: border-box; }
+        body, html { 
+            margin: 0; padding: 0; width: 100%; height: 100%; 
+            overflow: hidden; /* 防止背景滚动 */
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: url('https://v2.api.yunbai.icu/api/acg/api.php') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        /* 背景遮罩 */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            z-index: 0;
+        }
+
+        /* 响应式容器 */
+        .main-container {
+            position: relative;
+            z-index: 1;
+            width: 95%;
+            max-width: 850px;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            animation: slowFadeIn 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        @keyframes slowFadeIn {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 卡片设计 */
+        details {
+            background: var(--glass-bg);
+            margin-bottom: 20px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        summary {
+            padding: 22px 30px;
+            font-size: 1.25rem;
+            font-weight: 600;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            color: #2c3e50;
+        }
+        
+        summary::-webkit-details-marker { display: none; }
+        
+        summary::after {
+            content: '＋';
+            font-size: 1.3rem;
+            color: var(--primary-blue);
+            transition: transform 0.6s ease;
+        }
+
+        details[open] summary::after {
+            content: '－';
+            transform: rotate(180deg);
+        }
+
+        /* 内容区：极慢平滑动画 & 适配手机滚动 */
+        .content-wrapper {
+            padding: 30px 40px;
+            max-height: 60vh;
+            overflow-y: auto;
+            background: #ffffff;
+            opacity: 0;
+            animation: slideDown 1.0s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            -webkit-overflow-scrolling: touch; /* 手机顺滑滚动 */
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- 协议全文排版还原 --- */
+        .doc-section { margin-bottom: 40px; }
+        .header { text-align: center; border-bottom: 3px solid #eee; padding-bottom: 15px; margin-bottom: 25px; }
+        h1 { font-size: 20pt; margin: 0; }
+        h2 { font-size: 14pt; border-left: 5px solid; padding-left: 12px; margin-top: 25px; margin-bottom: 15px; }
+        p, li { font-size: 10.5pt; text-align: justify; line-height: 1.7; color: #333; margin-bottom: 10px; }
+        .warning-box { border: 1px solid #e74c3c; background: #fff8f8; padding: 15px; border-radius: 8px; margin: 15px 0; }
+        .prohibited-zone { background: #fffaf0; border: 1px solid #ffcc80; padding: 18px; border-radius: 8px; }
+        .footer { margin-top: 30px; border-top: 1px solid #eee; padding-top: 15px; font-size: 9.5pt; color: #7f8c8d; }
+
+        /* 文档个性化颜色 */
+        .doc-1 h1 { color: #2c3e50; } .doc-1 h2 { color: #2980b9; border-left-color: #2980b9; background: #eff7fd; }
+        .doc-2 h1 { color: #1a237e; } .doc-2 h2 { color: #1a237e; border-left-color: #1a237e; background: #f4f6f9; }
+        .doc-3 h1 { color: #16a085; } .doc-3 h2 { color: #2c3e50; border-left-color: #16a085; background: #f0fdfa; }
+
+        /* 手机端细节优化 */
+        @media (max-width: 600px) {
+            summary { padding: 18px 20px; font-size: 1.1rem; }
+            .content-wrapper { padding: 20px 25px; }
+            h1 { font-size: 18pt; }
+            .main-container { width: 92%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+
+    <details>
+        <summary>1. 云服务器用户服务协议 (TOS)</summary>
+        <div class="content-wrapper doc-1">
+            <div class="header" style="border-bottom-color: #3498db;">
+                <h1>云服务器用户服务协议 (TOS)</h1>
+                <div style="font-size: 10pt; color: #7f8c8d; margin-top: 8px;">Cloud Service Terms of Service - 合规经营版</div>
+            </div>
+            <p>欢迎使用我们的云服务（以下简称“本平台”）。在您开始注册或购买本平台提供的任何云端资源前，请务必仔细阅读并充分理解本协议。<strong>您的注册、登录或购买行为，即视为您已阅读并同意本协议的所有条款。</strong></p>
+            
+            <h2>第一条 用户资格与账号安全</h2>
+            <p>1.1 <strong>实名认证：</strong>根据《网络安全法》及相关规定，用户必须完成真实身份信息认证。若因提供虚假信息导致的后果由用户承担。</p>
+            <p>1.2 <strong>账号责任：</strong>用户账号仅限本人使用。因密码泄露、账号借用导致的数据丢失或违规行为，由注册人承担全部责任。</p>
+
+            <h2>第二条 禁止使用的行为清单</h2>
+            <p>为维护网络安全及合法合规，本平台严禁用户利用服务器从事以下活动：</p>
+            <ul>
+                <li><strong>违反法律：</strong>散布谣言、色情、赌博、恐怖主义及危害国家安全的信息。</li>
+                <li><strong>网络攻击：</strong>发起 DDoS 攻击、扫描端口、破解他人系统、传播病毒木马或进行非法渗透测试。</li>
+                <li><strong>违规搭建：</strong>搭建 VPN 翻墙节点、未备案发卡平台、代刷网、垃圾邮件群发系统（SPAM）。</li>
+                <li><strong>资源滥用：</strong>长时间超负荷占用 CPU 或网络带宽、运行虚拟货币挖掘程序（挖矿）。</li>
+            </ul>
+            <div class="warning-box">
+                <strong style="color: #c0392b;">特别预警：</strong><br>
+                本平台具备自动化流量检测系统，一经发现涉及以上“禁令”行为，将采取<strong>立即停机、注销账号且不予退款</strong>的处罚。严重者将封存相关证据并上报公安机关。
+            </div>
+
+            <h2>第三条 数据安全与备份声明</h2>
+            <p>3.1 <strong>备份义务：</strong>本平台负责底层硬件及网络的可用性，但不承担用户数据的绝对完整性。<strong>强烈建议用户定期进行异地备份。</strong></p>
+            <p>3.2 <strong>免责情形：</strong>因不可抗力（地震、火灾）、运营商光缆断裂、黑客大规模攻击等导致的服务中断，本平台不承担直接经济赔偿。</p>
+
+            <h2>第四条 运维、资费与退款</h2>
+            <p>4.1 <strong>资费调整：</strong>本平台有权根据市场行情调整产品价格。</p>
+            <p>4.2 <strong>退款政策：</strong>自购买起 24 小时内，未产生违规且流量使用量 < 5% 的订单可申请退款。特价、促销及违规封禁产品不接受退款。</p>
+
+            <div class="footer" style="text-align: center;">云白云服务平台 © 2025-2026 | 本协议自发布之日起生效</div>
+        </div>
+    </details>
+
+    <details>
+        <summary>2. 香港自营优质资源合规使用协议</summary>
+        <div class="content-wrapper doc-2">
+            <div class="header">
+                <h1>香港自营优质资源合规使用协议</h1>
+                <div style="font-size: 10pt; color: #7f8c8d; margin-top: 10px;">文件编号：YB-HK-SAFETY-2026</div>
+            </div>
+            <p>本协议旨在规范用户对本平台香港区域自营资源（包含非标住宅/商业出口链路）的使用行为。用户购买、开通相关服务，即视为完全知悉并同意本协议。</p>
+
+            <h2>第一条 业务定位与核心禁令</h2>
+            <p>1.1 <strong>资源用途</strong>：本平台提供的资源仅限用于合规的网站架设、应用后端、软件开发测试及合法数据处理业务。</p>
+            <p>1.2 <strong>代理工具严禁声明</strong>：<br>用户<strong style="color: #d32f2f;">严禁</strong>利用本服务器搭建或运行任何形式的翻墙工具、VPN、SSR、V2Ray、Trojan、Shadowsocks、Hysteria 等绕过监管的协议。一经发现，系统将执行<strong style="color: #d32f2f;">永久封禁</strong>且不予退还任何剩余费用。</p>
+
+            <h2>第二条 实时风控与技术处置</h2>
+            <p>2.1 <strong>全天候流量审查</strong>：本平台依托自研防火墙对流量特征进行实时审计。如检测到连续的加密隧道握手特征，系统将触发自动防御。</p>
+            <p>2.2 <strong>处置措施</strong>：触发违规后，系统将立即吊销 IP 使用权并关停虚拟机。由此造成的损失由用户自行承担。</p>
+
+            <div class="prohibited-zone">
+                <strong style="color: #e65100;">⚠️ 违约法律追偿：</strong>
+                <ul>
+                    <li><strong>IP 损毁赔偿</strong>：若导致香港原生 IP 被封锁（GFW 封锁），用户须赔偿 <strong>CNY 150.00 / 个</strong> 的资源重建费。</li>
+                    <li><strong>信用黑名单</strong>：违约实名信息将永久录入“云白云平台失信名单”。</li>
+                </ul>
+            </div>
+
+            <h2>第三条 行政报送与司法协作</h2>
+            <p>3.1 <strong>合规报送</strong>：定期将涉黑灰产、网络攻击及违规搭建的行为日志上报至<strong>工信部网络安全威胁协作平台</strong>。</p>
+            <p>3.2 <strong>调证配合</strong>：应司法机关指令，平台将依法全额披露用户实名资料、登录 IP 轨迹及流量日志。</p>
+
+            <div class="footer" style="text-align: right;">运营主体：<strong>yunbai.org 资源管理</strong><br>执行日期：2026年4月22日</div>
+        </div>
+    </details>
+
+    <details>
+        <summary>3. 用户隐私保护政策</summary>
+        <div class="content-wrapper doc-3">
+            <div class="header">
+                <h1>用户隐私保护政策</h1>
+                <div style="font-size: 10pt; color: #7f8c8d; margin-top: 10px;">文件编号：YB-PRIVACY-2026</div>
+            </div>
+            <p>本隐私政策说明 <strong>yunbai.org</strong> 如何收集、使用及保护您的个人信息。我们承诺严格按照法律法规要求保护您的隐私安全。</p>
+
+            <h2>第一条 我们收集的信息</h2>
+            <ul>
+                <li><strong>基础账户信息</strong>：注册邮箱、联系方式及实名认证信息。</li>
+                <li><strong>服务日志</strong>：登录时间、登录 IP 地址、操作历史及流量统计。</li>
+                <li><strong>交易记录</strong>：充值记录、订单历史及支付凭证。</li>
+            </ul>
+
+            <h2>第二条 信息的使用目的</h2>
+            <p>1. <strong>提供与维护服务</strong>：用于创建账号、处理订单及技术支持。</p>
+            <p>2. <strong>安全保障与风控</strong>：用于检测异常登录、拦截网络攻击及识别违规行为。</p>
+            <p>3. <strong>合规审查</strong>：在发生违规行为时，相关信息将作为违规判定证据。</p>
+
+            <h2>第三条 信息的存储与共享</h2>
+            <p>3.1 <strong>存储期限</strong>：在法律规定最短期限内保留。涉犯罪证据的日志将依法延长保存。</p>
+            <p>3.2 <strong>依法共享</strong>：根据法律要求向监管平台报送安全威胁，或应司法机关调证请求披露信息。</p>
+
+            <div class="footer" style="text-align: right;">发布主体：<strong>yunbai.org 隐私保护</strong><br>生效日期：2026年4月22日</div>
+        </div>
+    </details>
+
+</div>
+
+</body>
+</html>
